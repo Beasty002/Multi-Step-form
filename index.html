@@ -49,7 +49,7 @@
       padding: 20px;
       border-radius: 10px;
       display: flex;
-      gap: 80px;
+      width: 900px;
     }
 
     aside {
@@ -100,21 +100,24 @@
     }
 
     .step-title-number {
-      color: var(--light-gray);
+      color: rgb(209, 209, 209);
       text-transform: uppercase;
       font-size: 0.8rem;
       font-weight: 400;
     }
 
     .step-title {
-      font-size: 1rem;
+      font-size: 0.94rem;
       font-weight: 900;
       text-transform: uppercase;
     }
 
     .main-section {
+      padding: 0px 80px;
       padding-top: 40px;
-      padding-right: 80px;
+      padding-right: 60px;
+      flex: 1;
+      justify-content: center;
     }
 
 
@@ -122,6 +125,8 @@
       position: relative;
       height: 100%;
     }
+
+
 
 
 
@@ -153,11 +158,13 @@
       color: var(--marine-blue);
 
       .err-msg {
+        display: none;
         font-weight: 500;
         font-size: 0.98rem;
         color: var(--strawberry-red);
         position: absolute;
         right: 0;
+        top: 2px;
       }
 
       label {
@@ -194,7 +201,18 @@
       border: none;
       position: absolute;
       bottom: 0;
+      transition: all 0.2s ease;
 
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      padding-left: 0;
+      color: var(--cool-gray);
+    }
+
+    .btn-secondary:hover {
+      color: var(--marine-blue);
     }
 
     .btn-primary {
@@ -206,6 +224,113 @@
 
     .btn-primary:hover {
       background-color: var(--purplish-blue);
+    }
+
+    #step1 {
+      display: none;
+    }
+
+    .card-container {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+
+
+
+      .card {
+        flex: 1;
+
+
+        input {
+          display: none;
+        }
+
+        label {
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          border: 1px solid var(--light-gray);
+          border-radius: 5px;
+          padding: 16px 11px;
+
+
+          img {
+            width: 42px;
+          }
+
+          .plan-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+
+            h2 {
+              font-size: 1.1rem;
+              color: var(--marine-blue);
+            }
+
+            span {
+              font-size: 0.89rem;
+              color: var(--light-gray);
+              font-weight: 400;
+            }
+          }
+        }
+
+        input:checked+label {
+          border-color: purple;
+        }
+      }
+    }
+
+    .toggle-container {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--magnolia);
+      padding: 6px;
+      gap: 20px;
+      color: var(--cool-gray);
+      font-weight: 600;
+
+      label {
+        cursor: pointer;
+      }
+
+      input {
+        display: none;
+      }
+
+
+
+      #toggleBtn {
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        width: 45px;
+        height: 23px;
+        border-radius: 21px;
+        background-color: var(--marine-blue);
+        padding: 2px 4px;
+
+        span {
+          position: absolute;
+          top: 4px;
+          display: block;
+          width: 15px;
+          height: 15px;
+          border-radius: 15px;
+          background-color: var(--white);
+          transition: all 0.3s ease;
+        }
+
+
+      }
+    }
+
+    .toggle-form-group input:checked+label {
+      color: var(--marine-blue)
     }
   </style>
 </head>
@@ -270,40 +395,64 @@
               <input type="tel" id="phone" name="phone" placeholder="Enter your phone">
             </div>
           </section>
-          <button class="btn btn-primary" type="button" id="next-btn">Next Step</button>
 
+        </section>
+        <section id="step2" class="steps-container">
+          <h1>Select Your Plan</h1>
+          <p class="info-p">You have a option of monthly or yearly billing</p>
+
+
+          <div class="card-container">
+            <div class="card">
+              <input type="radio" name="plan" id="arcade" checked>
+              <label for="arcade">
+                <img src="./assets/images/icon-arcade.svg" alt="">
+                <din class="plan-info">
+                  <h2>Arcade</h2>
+                  <span class="plan-pricing">$9/mo</span>
+                </din>
+              </label>
+            </div>
+            <div class="card">
+              <input type="radio" name="plan" id="advanced">
+              <label for="advanced">
+                <img src="./assets/images/icon-advanced.svg" alt="">
+                <din class="plan-info">
+                  <h2>Advanced</h2>
+                  <span class="plan-pricing">$12/mo</span>
+                </din>
+              </label>
+            </div>
+            <div class="card">
+              <input type="radio" name="plan" id="pro">
+              <label for="pro">
+                <img src="./assets/images/icon-pro.svg" alt="">
+                <din class="plan-info">
+                  <h2>Pro</h2>
+                  <span class="plan-pricing">$15/mo</span>
+                </din>
+              </label>
+            </div>
+
+          </div>
+          <div class="toggle-container">
+            <div class="toggle-form-group">
+              <input type="radio" name="planTime" id="monthly" checked>
+              <label for="monthly">Monthly</label>
+            </div>
+            <span id="toggleBtn"><span class="toggleCircle"></span></span>
+            <div class="toggle-form-group">
+              <input type="radio" name="planTime" id="yearly">
+              <label for="yearly">Yearly</label>
+            </div>
+
+          </div>
+          <button class="btn btn-secondary" type="button" id="next-btn">Go back</button>
+          <button class="btn btn-primary" type="button" id="next-btn">Next Step</button>
         </section>
 
       </form>
     </section>
-
-
-
-
-
-    <!-- Step 1 end -->
-
-    <!-- Step 2 start -->
-
-    <!-- Select your plan
-    You have the option of monthly or yearly billing.
-
-    Arcade
-    $9/mo
-
-    Advanced
-    $12/mo
-
-    Pro
-    $15/mo
-
-    Monthly
-    Yearly
-
-    Go Back
-    Next Step -->
-
-    <!-- Step 2 end -->
 
     <!-- Step 3 start -->
 
@@ -356,6 +505,10 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
+  <script>
+    const subscription = document.querySelector('main');
+    console.log(subscription.clientWidth)
+  </script>
 </body>
 
 </html>
