@@ -5,491 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
 
   <title>Frontend Mentor | Multi-step form</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-    :root {
-      /* Primary Colors */
-      --marine-blue: hsl(213, 96%, 18%);
-      --purplish-blue: hsl(243, 100%, 62%);
-      --pastel-blue: hsl(228, 100%, 84%);
-      --light-blue: hsl(206, 94%, 87%);
-      --strawberry-red: hsl(354, 84%, 57%);
-
-      /* Neutral Colors */
-      --cool-gray: hsl(231, 11%, 63%);
-      --light-gray: hsl(225, 7%, 78%);
-      --magnolia: hsl(217, 100%, 97%);
-      --alabaster: hsl(231, 100%, 99%);
-      --white: hsl(0, 0%, 100%);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      text-decoration: none;
-      list-style: none;
-      font-family: "Ubuntu", sans-serif;
-    }
-
-    body {
-      min-height: 100dvh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #eeeeee
-    }
-
-    main {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      display: flex;
-      width: 900px;
-    }
-
-    aside {
-      background: url("./assets/images/bg-sidebar-desktop.svg");
-      background-size: fill;
-      background-repeat: no-repeat;
-      padding: 40px 60px 10px 30px;
-      color: #fff;
-      height: 568px;
-      width: 274px;
-
-    }
-
-    .side-bar {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .side-bar-steps {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .step-number {
-      height: 35px;
-      width: 35px;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
-
-    .step-number.active {
-      color: black;
-      background-color: var(--light-blue);
-      border-color: var(--light-blue);
-    }
-
-    .step-info-container {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .step-title-number {
-      color: rgb(209, 209, 209);
-      text-transform: uppercase;
-      font-size: 0.8rem;
-      font-weight: 400;
-    }
-
-    .step-title {
-      font-size: 0.94rem;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .main-section {
-      padding: 0px 80px;
-      padding-top: 40px;
-      padding-right: 60px;
-      flex: 1;
-      justify-content: center;
-    }
-
-
-    form {
-      position: relative;
-      height: 100%;
-    }
-
-
-
-
-
-    h1 {
-      font-size: 2rem;
-      color: var(--marine-blue);
-    }
-
-    .info-p {
-      color: var(--cool-gray);
-      margin-top: 10px;
-      font-size: 0.95rem;
-    }
-
-
-
-    .form-container {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    .form-group {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      color: var(--marine-blue);
-
-      .err-msg {
-        display: none;
-        font-weight: 500;
-        font-size: 0.98rem;
-        color: var(--strawberry-red);
-        position: absolute;
-        right: 0;
-        top: 2px;
-      }
-
-      label {
-        font-weight: 400;
-        font-size: 1.08rem;
-      }
-
-      input {
-        border: 1px solid var(--cool-gray);
-        color: var(--marine-blue);
-        padding: 0.7em 0.9em;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        font-weight: 500;
-      }
-
-      input:focus {
-        outline: none;
-        border: 1px solid purple;
-      }
-
-      input::placeholder {
-        color: var(--light-gray);
-        font-weight: 500;
-      }
-
-    }
-
-    .btn {
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 500;
-      padding: 0.8em 1.2em;
-      border: none;
-      position: absolute;
-      bottom: 0;
-      transition: all 0.2s ease;
-
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      padding-left: 0;
-      color: var(--cool-gray);
-    }
-
-    .btn-secondary:hover {
-      color: var(--marine-blue);
-    }
-
-    .btn-primary {
-      background-color: var(--marine-blue);
-      color: #fff;
-      border-radius: 6px;
-      right: 0;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--purplish-blue);
-    }
-
-    #step1 {
-      display: none;
-    }
-
-    .card-container {
-      margin-top: 40px;
-      display: flex;
-      gap: 20px;
-
-
-
-      .card {
-        flex: 1;
-
-
-        input {
-          display: none;
-        }
-
-        label {
-          cursor: pointer;
-          display: flex;
-          flex-direction: column;
-          gap: 30px;
-          border: 1px solid var(--light-gray);
-          border-radius: 5px;
-          padding: 16px 11px;
-
-
-          img {
-            width: 42px;
-          }
-
-          .plan-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-
-            h2 {
-              font-size: 1.1rem;
-              color: var(--marine-blue);
-            }
-
-            span {
-              font-size: 0.89rem;
-              color: var(--light-gray);
-              font-weight: 400;
-            }
-          }
-        }
-
-        input:checked+label {
-          border-color: purple;
-        }
-      }
-    }
-
-    .toggle-container {
-      margin-top: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--magnolia);
-      padding: 6px;
-      gap: 20px;
-      color: var(--cool-gray);
-      font-weight: 600;
-
-      label {
-        cursor: pointer;
-      }
-
-      input {
-        display: none;
-      }
-
-
-
-      #toggleBtn {
-        cursor: pointer;
-        position: relative;
-        display: inline-block;
-        width: 45px;
-        height: 23px;
-        border-radius: 21px;
-        background-color: var(--marine-blue);
-        padding: 2px 4px;
-
-        span {
-          position: absolute;
-          top: 4px;
-          display: block;
-          width: 15px;
-          height: 15px;
-          border-radius: 15px;
-          background-color: var(--white);
-          transition: all 0.3s ease;
-        }
-
-
-      }
-    }
-
-    .toggle-form-group input:checked+label {
-      color: var(--marine-blue)
-    }
-
-    #step2 {
-      display: none;
-    }
-
-    .add-on-blocks {
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-
-      .block {
-        flex: 1;
-        border: 1px solid var(--purplish-blue);
-        padding: 1em 1.4em;
-        border-radius: 6px;
-
-
-        label {
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 15px;
-
-          .mid-block {
-            flex: 1;
-
-            h2 {
-              font-size: 1.2em;
-              font-weight: 500;
-              color: var(--marine-blue);
-            }
-
-            p {
-              font-size: 0.95em;
-              color: var(--cool-gray);
-            }
-          }
-
-          .addon-pricing {
-            color: var(--purplish-blue);
-            font-weight: 400;
-          }
-        }
-
-      }
-    }
-
-    #step3 {
-      display: none;
-    }
-
-    #summaryTable {
-      margin-top: 40px;
-      background-color: var(--magnolia);
-      padding: 20px 25px;
-
-    }
-
-    #summaryTable table {
-      width: 100%;
-      border-collapse: collapse;
-
-    }
-
-    thead tr {
-      border-bottom: 1px solid gainsboro;
-
-      th {
-        padding-bottom: 20px;
-        color: var(--marine-blue);
-        font-weight: 500;
-
-        #planType {
-          font-size: 18px;
-        }
-
-        #changeBtn {
-          cursor: pointer;
-          font-size: 0.9rem;
-          text-decoration: underline;
-          color: gray;
-          font-weight: 400;
-          margin-top: 4px;
-        }
-
-      }
-
-      #planPrice {
-        font-size: 1.1rem;
-        font-weight: 700;
-      }
-    }
-
-
-
-    thead tr th:first-child {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-    }
-
-    tbody {
-      border-collapse: collapse;
-
-      tr td {
-        padding: 12px 0px;
-        color: var(--cool-gray);
-      }
-    }
-
-    tbody tr:first-child td {
-      padding-top: 15px;
-    }
-
-    tr td {
-      font-size: 1.08rem;
-    }
-
-
-
-
-
-    tr th:last-child,
-    tr td:last-child {
-      text-align: right;
-    }
-
-    tbody tr:last-child {
-      padding-bottom: 0px !important;
-      color: red;
-    }
-
-    tbody tr:last-child td {
-      padding-bottom: 0px;
-    }
-
-    .total-container {
-      margin-top: 40px;
-      display: flex;
-      justify-content: space-between;
-      padding: 0px 25px;
-      color: var(--cool-gray);
-      align-items: center;
-
-      #total {
-        font-size: 1.3rem;
-        font-weight: 700;
-        /* color: #463EFF;
-         */
-        color: var(--purplish-blue);
-      }
-    }
-
-    #step4 .btn-primary {
-      background-color: var(--purplish-blue);
-    }
   </style>
 </head>
 
@@ -539,19 +60,21 @@
             <div class="form-group">
               <span class="err-msg">This field is required</span>
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your name">
+              <input type="text" id="name" name="name" placeholder="e.g. The Beasty">
 
             </div>
             <div class="form-group">
               <span class="err-msg">This field is required</span>
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email">
+              <input type="email" id="email" name="email" placeholder="e.g. thebeasty@gmail.com">
             </div>
             <div class="form-group">
               <span class="err-msg">This field is required</span>
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" placeholder="Enter your phone">
+              <input type="tel" id="phone" name="phone" placeholder="e.g. +13433234567">
             </div>
+            <button class="btn btn-primary" type="button" id="step1Nxt">Next Step</button>
+
           </section>
 
         </section>
@@ -565,37 +88,37 @@
               <input type="radio" name="plan" id="arcade" checked>
               <label for="arcade">
                 <img src="./assets/images/icon-arcade.svg" alt="">
-                <din class="plan-info">
+                <div class="plan-info">
                   <h2>Arcade</h2>
                   <span class="plan-pricing">$9/mo</span>
-                </din>
+                </div>
               </label>
             </div>
             <div class="card">
               <input type="radio" name="plan" id="advanced">
               <label for="advanced">
                 <img src="./assets/images/icon-advanced.svg" alt="">
-                <din class="plan-info">
+                <div class="plan-info">
                   <h2>Advanced</h2>
                   <span class="plan-pricing">$12/mo</span>
-                </din>
+                </div>
               </label>
             </div>
             <div class="card">
               <input type="radio" name="plan" id="pro">
               <label for="pro">
                 <img src="./assets/images/icon-pro.svg" alt="">
-                <din class="plan-info">
+                <div class="plan-info">
                   <h2>Pro</h2>
                   <span class="plan-pricing">$15/mo</span>
-                </din>
+                </div>
               </label>
             </div>
 
           </div>
           <div class="toggle-container">
             <div class="toggle-form-group">
-              <input type="radio" name="planTime" id="monthly" checked>
+              <input type="radio" name="planTime" id="monthly">
               <label for="monthly">Monthly</label>
             </div>
             <span id="toggleBtn"><span class="toggleCircle"></span></span>
@@ -605,8 +128,8 @@
             </div>
 
           </div>
-          <button class="btn btn-secondary" type="button" id="next-btn">Go back</button>
-          <button class="btn btn-primary" type="button" id="next-btn">Next Step</button>
+          <button class="btn btn-secondary" type="button" id="step2Back">Go back</button>
+          <button class="btn btn-primary" type="button" id="step2Nxt">Next Step</button>
         </section>
         <section id="step3" class="steps-container">
           <h1 class="section-title">Pick add-ons</h1>
@@ -646,8 +169,8 @@
               </label>
 
             </div>
-            <button class="btn btn-secondary" type="button" id="next-btn">Go back</button>
-            <button class="btn btn-primary" type="button" id="next-btn">Next Step</button>
+            <button class="btn btn-secondary" type="button" id="step3Back">Go back</button>
+            <button class="btn btn-primary" type="button" id="step3Nxt">Next Step</button>
           </section>
         </section>
         <section id="step4" class="steps-container">
@@ -665,14 +188,6 @@
 
               </thead>
               <tbody>
-                <tr class="summary-adon">
-                  <td>Online Service</td>
-                  <td>+$1/mo</td>
-                </tr>
-                <tr class="summary-adon">
-                  <td>Online Service</td>
-                  <td>+$1/mo</td>
-                </tr>
               </tbody>
 
             </table>
@@ -682,69 +197,32 @@
             <span>Total(per month)</span>
             <span id="total">+$10/mo</span>
           </div>
-          <button class="btn btn-secondary" type="button" id="next-btn">Go back</button>
-          <button class="btn btn-primary" type="button" id="next-btn">Confirm</button>
-
+          <button class="btn btn-secondary" type="button" id="step4Back">Go back</button>
+          <button class="btn-confirm" type="button" id="confirm">Confirm</button>
+        </section>
+        <section id="step5" class="steps-container">
+          <img src="./assets/images/icon-thank-you.svg" alt="">
+          <h1 class="section-title">Thank you!</h1>
+          <p>Thanks for confirming your subscriptions! We hope you have fun using our platform. If you ever need support
+            ,please feel free to email us st support@beastycorp.com</p>
         </section>
 
       </form>
     </section>
 
-    <!-- Step 3 start -->
 
-    <!-- Pick add-ons
-    Add-ons help enhance your gaming experience.
-
-    Online service
-    Access to multiplayer games
-    +$1/mo
-
-    Larger storage
-    Extra 1TB of cloud save
-    +$2/mo
-
-    Customizable Profile
-    Custom theme on your profile
-    +$2/mo
-
-    Go Back
-    Next Step -->
-
-    <!-- Step 3 end -->
-
-    <!-- Step 4 start -->
-    <!-- 
-    Finishing up
-    Double-check everything looks OK before confirming. -->
-
-    <!-- Dynamically add subscription and add-on selections here -->
-    <!-- 
-    Total (per month/year)
-
-    Go Back
-    Confirm -->
-
-    <!-- Step 4 end -->
-
-    <!-- Step 5 start -->
-
-    <!-- Thank you!
-
-    Thanks for confirming your subscription! We hope you have fun
-    using our platform. If you ever need support, please feel free
-    to email us at support@loremgaming.com. -->
-
-    <!-- Step 5 end -->
   </main>
   <!-- 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
-  <script>
-    const subscription = document.querySelector('main');
-    console.log(subscription.clientWidth)
+  <script src="./script.js">
+
+
+
   </script>
+
 </body>
 
 </html>
