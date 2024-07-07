@@ -384,6 +384,112 @@
     #step3 {
       display: none;
     }
+
+    #summaryTable {
+      margin-top: 40px;
+      background-color: var(--magnolia);
+      padding: 20px 25px;
+
+    }
+
+    #summaryTable table {
+      width: 100%;
+      border-collapse: collapse;
+
+    }
+
+    thead tr {
+      border-bottom: 1px solid gainsboro;
+
+      th {
+        padding-bottom: 20px;
+        color: var(--marine-blue);
+        font-weight: 500;
+
+        #planType {
+          font-size: 18px;
+        }
+
+        #changeBtn {
+          cursor: pointer;
+          font-size: 0.9rem;
+          text-decoration: underline;
+          color: gray;
+          font-weight: 400;
+          margin-top: 4px;
+        }
+
+      }
+
+      #planPrice {
+        font-size: 1.1rem;
+        font-weight: 700;
+      }
+    }
+
+
+
+    thead tr th:first-child {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    tbody {
+      border-collapse: collapse;
+
+      tr td {
+        padding: 12px 0px;
+        color: var(--cool-gray);
+      }
+    }
+
+    tbody tr:first-child td {
+      padding-top: 15px;
+    }
+
+    tr td {
+      font-size: 1.08rem;
+    }
+
+
+
+
+
+    tr th:last-child,
+    tr td:last-child {
+      text-align: right;
+    }
+
+    tbody tr:last-child {
+      padding-bottom: 0px !important;
+      color: red;
+    }
+
+    tbody tr:last-child td {
+      padding-bottom: 0px;
+    }
+
+    .total-container {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 25px;
+      color: var(--cool-gray);
+      align-items: center;
+
+      #total {
+        font-size: 1.3rem;
+        font-weight: 700;
+        /* color: #463EFF;
+         */
+        color: var(--purplish-blue);
+      }
+    }
+
+    #step4 .btn-primary {
+      background-color: var(--purplish-blue);
+    }
   </style>
 </head>
 
@@ -547,6 +653,37 @@
         <section id="step4" class="steps-container">
           <h1 class="section-title">Finishing up</h1>
           <p class="info-p">Double-check everything looks OK before confirming</p>
+          <section id="summaryTable">
+            <table>
+              <thead>
+                <tr>
+                  <th><span id="planType">Arcade(Monthly)</span>
+                    <span id="changeBtn">Change</span>
+                  </th>
+                  <th id="planPrice">$9/mo</th>
+                </tr>
+
+              </thead>
+              <tbody>
+                <tr class="summary-adon">
+                  <td>Online Service</td>
+                  <td>+$1/mo</td>
+                </tr>
+                <tr class="summary-adon">
+                  <td>Online Service</td>
+                  <td>+$1/mo</td>
+                </tr>
+              </tbody>
+
+            </table>
+
+          </section>
+          <div class="total-container">
+            <span>Total(per month)</span>
+            <span id="total">+$10/mo</span>
+          </div>
+          <button class="btn btn-secondary" type="button" id="next-btn">Go back</button>
+          <button class="btn btn-primary" type="button" id="next-btn">Confirm</button>
 
         </section>
 
