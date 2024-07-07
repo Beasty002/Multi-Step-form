@@ -332,6 +332,58 @@
     .toggle-form-group input:checked+label {
       color: var(--marine-blue)
     }
+
+    #step2 {
+      display: none;
+    }
+
+    .add-on-blocks {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .block {
+        flex: 1;
+        border: 1px solid var(--purplish-blue);
+        padding: 1em 1.4em;
+        border-radius: 6px;
+
+
+        label {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 15px;
+
+          .mid-block {
+            flex: 1;
+
+            h2 {
+              font-size: 1.2em;
+              font-weight: 500;
+              color: var(--marine-blue);
+            }
+
+            p {
+              font-size: 0.95em;
+              color: var(--cool-gray);
+            }
+          }
+
+          .addon-pricing {
+            color: var(--purplish-blue);
+            font-weight: 400;
+          }
+        }
+
+      }
+    }
+
+    #step3 {
+      display: none;
+    }
   </style>
 </head>
 
@@ -375,7 +427,7 @@
     <section class="main-section">
       <form action="">
         <section id="step1" class="steps-container">
-          <h1>Personal info</h1>
+          <h1 class="section-title">Personal info</h1>
           <p class="info-p">Please provide your name, email address, and phone number.</p>
           <section class="form-container">
             <div class="form-group">
@@ -398,7 +450,7 @@
 
         </section>
         <section id="step2" class="steps-container">
-          <h1>Select Your Plan</h1>
+          <h1 class="section-title">Select Your Plan</h1>
           <p class="info-p">You have a option of monthly or yearly billing</p>
 
 
@@ -449,6 +501,53 @@
           </div>
           <button class="btn btn-secondary" type="button" id="next-btn">Go back</button>
           <button class="btn btn-primary" type="button" id="next-btn">Next Step</button>
+        </section>
+        <section id="step3" class="steps-container">
+          <h1 class="section-title">Pick add-ons</h1>
+          <p class="info-p">Add-ons help enhance you gaming experience</p>
+
+          <section class="add-on-blocks">
+            <div class="block">
+              <label for="onlineService">
+                <input type="checkbox" name="add-ons" id="onlineService">
+                <div class="mid-block">
+                  <h2>online service</h2>
+                  <p>Access to play multiplayer games</p>
+                </div>
+                <span class="addon-pricing">+$1/mo</span>
+              </label>
+
+            </div>
+            <div class="block">
+              <label for="largeStorage">
+                <input type="checkbox" name="add-ons" id="largeStorage">
+                <div class="mid-block">
+                  <h2>Large Storage</h2>
+                  <p>Access to play multiplayer games</p>
+                </div>
+                <span class="addon-pricing">+$1/mo</span>
+              </label>
+
+            </div>
+            <div class="block">
+              <label for="customizable">
+                <input type="checkbox" name="add-ons" id="customizable">
+                <div class="mid-block">
+                  <h2>Customizable</h2>
+                  <p>Access to play multiplayer games</p>
+                </div>
+                <span class="addon-pricing">+$1/mo</span>
+              </label>
+
+            </div>
+            <button class="btn btn-secondary" type="button" id="next-btn">Go back</button>
+            <button class="btn btn-primary" type="button" id="next-btn">Next Step</button>
+          </section>
+        </section>
+        <section id="step4" class="steps-container">
+          <h1 class="section-title">Finishing up</h1>
+          <p class="info-p">Double-check everything looks OK before confirming</p>
+
         </section>
 
       </form>
