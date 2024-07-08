@@ -113,7 +113,7 @@ aside {
 form {
     position: relative;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .steps-container {
@@ -145,6 +145,7 @@ form {
     p {
         color: var(--cool-gray);
         text-align: center;
+        font-size: 1.1rem;
     }
 
 }
@@ -210,7 +211,7 @@ h1 {
 .info-p {
     color: var(--cool-gray);
     margin-top: 10px;
-    font-size: 0.95rem;
+    font-size: 1.02rem;
 }
 
 
@@ -265,14 +266,25 @@ h1 {
 
 }
 
+.btn-container {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+
+    .btn-cont {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
 .btn {
+    width: fit-content;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
     padding: 0.8em 1.2em;
     border: none;
-    position: absolute;
-    bottom: 0;
     transition: all 0.2s ease;
 
 }
@@ -296,13 +308,12 @@ h1 {
 }
 
 .btn-confirm {
+    width: fit-content;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
     padding: 0.8em 1.2em;
     border: none;
-    position: absolute;
-    bottom: 0;
     transition: all 0.2s ease;
 }
 
@@ -353,7 +364,7 @@ h1 {
                 }
 
                 span {
-                    font-size: 0.89rem;
+                    font-size: 0.98rem;
                     color: var(--light-gray);
                     font-weight: 400;
                 }
@@ -574,4 +585,225 @@ tbody tr:last-child td {
 
 #step4 .btn-primary {
     background-color: var(--purplish-blue);
+}
+
+@media(width < 900px) {
+    main {
+        padding: 10px;
+
+    }
+
+    .main-section {
+        padding: 0px 20px;
+        padding-right: 10px;
+    }
+}
+
+@media (width <=650px) {
+    main {
+        position: relative;
+        flex-direction: column;
+        height: 100dvh;
+        align-items: center;
+        width: 100%;
+        padding: 0px;
+        background-color: transparent;
+    }
+
+    aside {
+        background: url("./assets/images/bg-sidebar-mobile.svg") no-repeat;
+        background-size: cover;
+        height: 172px;
+        padding: 0px 30px;
+        width: 100%;
+        position: absolute;
+    }
+
+    .step-info-container {
+        display: none;
+    }
+
+    .side-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0px;
+        height: 100%;
+        padding-bottom: 90px;
+    }
+
+    form {
+        width: 100%;
+        overflow-x: hidden;
+        height: 100%;
+
+
+    }
+
+
+    .main-section {
+        margin-top: 100px;
+        width: 90%;
+        z-index: 3;
+        overflow: hidden;
+    }
+
+    .steps-container {
+        top: 0px;
+        width: 100%;
+        background-color: #fff;
+        height: auto;
+        border-radius: 20px;
+        padding: 20px;
+        left: 100%;
+
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    .info-p {
+        font-size: 1.08rem;
+    }
+
+    .form-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        gap: 4px;
+
+        .err-msg {
+            font-size: 0.9rem;
+        }
+
+        label {
+            font-size: 1.02rem;
+        }
+
+        input {
+
+            padding: 0.5em 0.7em;
+            font-size: 1.08rem;
+        }
+
+    }
+
+
+
+    .card-container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+
+
+        .card {
+            flex: 1;
+
+
+            input {
+                display: none;
+            }
+
+            label {
+                cursor: pointer;
+                display: flex;
+                flex-direction: row;
+                gap: 30px;
+                border: 1px solid var(--light-gray);
+                border-radius: 5px;
+                padding: 16px 11px;
+
+
+                img {
+                    width: 42px;
+                }
+
+                .plan-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+
+                    h2 {
+                        font-size: 1.1rem;
+                        color: var(--marine-blue);
+                    }
+
+                    span {
+                        font-size: 0.89rem;
+                        color: var(--light-gray);
+                        font-weight: 400;
+                    }
+                }
+            }
+
+            input:checked+label {
+                border-color: purple;
+            }
+        }
+    }
+
+    .add-on-blocks {
+        margin-top: 20px;
+
+        gap: 10px;
+
+        .block {
+            padding: 0.8em 1em;
+
+
+            label {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 10px;
+
+                .mid-block {
+                    flex: 1;
+
+                    h2 {
+                        font-size: 1.1em;
+
+                    }
+
+                    p {
+                        font-size: 0.9em;
+
+                    }
+                }
+
+
+            }
+
+        }
+    }
+
+
+
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        background-color: #fff;
+        width: 100%;
+        left: 0;
+        padding: 20px 0px;
+
+        .btn-cont {
+            width: 90%;
+            padding-right: 10px;
+        }
+    }
+
+    #summaryTable {
+        margin-top: 20px;
+    }
 }

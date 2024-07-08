@@ -22,6 +22,7 @@ const yearlyRadio = document.querySelector("#yearly");
 const toggleBtn = document.querySelector("#toggleBtn");
 const planRadio = document.querySelectorAll(".card input")
 const addOnRadio = document.querySelectorAll(".block label input");
+const btnContainer = document.querySelectorAll(".btn-container");
 let month = true;
 
 
@@ -31,6 +32,10 @@ btn.forEach(el => {
         stepNone();
     })
 });
+btnContainer.forEach(el => {
+    el.style.display = "none";
+})
+btnContainer[0].style.display = "flex";
 
 function stepNone() {
     stepNumber.forEach(element => {
@@ -49,9 +54,12 @@ step1Nxt.onclick = () => {
     if (!phonecheck()) { isValid = false; }
     stepNumber[0].classList.add("active")
     if (isValid) {
+        stepNone();
         stepNumber[1].classList.add("active")
         step1.style.left = "-100%";
         step2.style.left = "0%";
+        btnContainer[0].style.display = "none";
+        btnContainer[1].style.display = "flex";
     }
 }
 
@@ -59,6 +67,8 @@ step2Nxt.onclick = () => {
     stepNumber[2].classList.add("active")
     step2.style.left = "-100%";
     step3.style.left = "0%";
+    btnContainer[1].style.display = "none";
+    btnContainer[2].style.display = "flex";
     updateSummary();
 }
 
@@ -66,6 +76,8 @@ step3Nxt.onclick = () => {
     stepNumber[3].classList.add("active")
     step3.style.left = "-100%";
     step4.style.left = "0%";
+    btnContainer[2].style.display = "none";
+    btnContainer[3].style.display = "flex";
     updateTotal();
 }
 document.getElementById("confirm").onclick = () => {
@@ -73,6 +85,8 @@ document.getElementById("confirm").onclick = () => {
     stepNumber[3].classList.add("active")
     step4.style.left = "-100%"
     step5.style.left = "0%"
+    btnContainer[3].style.display = "none";
+    btnContainer[4].style.display = "flex";
 
 }
 
@@ -80,18 +94,24 @@ step2Back.onclick = () => {
     stepNumber[0].classList.add("active")
     step2.style.left = "100%";
     step1.style.left = "0%";
+    btnContainer[1].style.display = "none";
+    btnContainer[0].style.display = "flex";
 }
 
 step3Back.onclick = () => {
     stepNumber[1].classList.add("active")
     step3.style.left = "100%";
     step2.style.left = "0%";
+    btnContainer[2].style.display = "none";
+    btnContainer[1].style.display = "flex";
 }
 
 step4Back.onclick = () => {
     stepNumber[2].classList.add("active")
     step4.style.left = "100%";
     step3.style.left = "0%";
+    btnContainer[3].style.display = "none";
+    btnContainer[2].style.display = "flex";
 }
 changeBtn.onclick = () => {
     stepNone();
@@ -99,6 +119,8 @@ changeBtn.onclick = () => {
     step4.style.left = "100%";
     step3.style.left = "100%";
     step2.style.left = "0%";
+    btnContainer[3].style.display = "none";
+    btnContainer[1].style.display = "flex";
 }
 
 
