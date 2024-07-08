@@ -39,7 +39,7 @@ function stepNone() {
 }
 
 name.addEventListener("keyup", namecheck);
-email.addEventListener("keyup", emailcheck);
+// email.addEventListener("keyup", emailcheck);
 phone.addEventListener("keyup", phonecheck);
 
 step1Nxt.onclick = () => {
@@ -115,23 +115,49 @@ function namecheck() {
 }
 
 function emailcheck() {
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (email.value === "") {
         errMsg[1].style.display = "block";
+        errMsg[1].innerText = "This field is required";
         email.style.border = "1px solid red";
         return false;
-    } else {
+    }
+    else if (!emailPattern.test(email.value)) {
+        errMsg[1].style.display = "block";
+        email.style.border = "1px solid red";
+        errMsg[1].innerText = "Please enter a valid email address";
+        return false;
+    }
+
+
+    else {
         errMsg[1].style.display = "none";
         email.style.border = "1px solid var(--cool-gray)";
         return true;
     }
 }
+phone.addEventListener("input", function () {
+    phone.value = phone.value.replace(/\D/g, '');
+    phonecheck();
+});
 
 function phonecheck() {
+
     if (phone.value === "") {
         errMsg[2].style.display = "block";
         phone.style.border = "1px solid red";
+        errMsg[2].innerText = "This field is required"
         return false;
-    } else {
+
+    }
+    else if (phone.value.length > 10) {
+        errMsg[2].style.display = "block";
+        phone.style.border = "1px solid red";
+        errMsg[2].innerText = "Please enter a valid number less than 10"
+        return false;
+    }
+    else {
         errMsg[2].style.display = "none";
         phone.style.border = "1px solid var(--cool-gray)";
         return true;
